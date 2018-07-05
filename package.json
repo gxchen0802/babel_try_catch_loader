@@ -1,6 +1,6 @@
 {
   "name": "babel-try-catch-loader",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "author": "syszhpe@gmail.com",
   "description": "babel try catch loader for webpack",
   "main": "lib/index.js",

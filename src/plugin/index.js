@@ -1,8 +1,10 @@
 import functionNameHelper from 'babel-helper-function-name'
 import template from 'babel-template'
 import * as t from 'babel-types'
-import {SourceMapConsumer} from 'source-map'
-import nodePath  from 'path'
+import {
+    SourceMapConsumer
+} from 'source-map'
+import nodePath from 'path'
 
 /*
  stack format:
@@ -88,7 +90,7 @@ export default {
             let sourceMap = new SourceMapConsumer(this.opts.sourceMap);
             fileName = sourceMap._sources._array[0];
             sourceLineMap = {};
-            sourceMap.eachMapping(function (mappingItem) {
+            sourceMap.eachMapping(function(mappingItem) {
                 sourceLineMap[mappingItem.generatedLine] = mappingItem.originalLine;
             });
         }
@@ -104,9 +106,20 @@ export default {
                 }
 
                 // ignore empty function body
-                const body = path.node.body.body
-                if (body.length === 0) {
-                    return
+                // const body = path.node.body.body
+                // if (body.length === 0) {
+                //     return
+                // }
+                let body;
+                if (t.isArrowFunctionExpression(path.node) && t.isCallExpression(path.node.body)) {
+                    // CallExpression that in ArrowFunctionExpression doesnot have 'body' property. e.g. h => h(App)
+                    body = t.returnStatement(path.node.body);
+                } else {
+                    // ignore empty function body
+                    body = path.node.body.body
+                    if (body.length === 0) {
+                        return
+                    }
                 }
 
                 //gather function name
