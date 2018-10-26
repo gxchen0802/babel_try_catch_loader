@@ -16,7 +16,7 @@ module.exports = function (source, inputMap) {
     var userOptions = assign({}, globalOptions, loaderOptions);
     var filename = path.relative(process.cwd(), absoulteFilename);
     var transOpts = {
-        babelrc: false,
+        babelrc: true,
         inputSourceMap: inputMap,
         sourceRoot: process.cwd(),
         filename: filename,

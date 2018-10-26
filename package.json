@@ -1,6 +1,6 @@
 {
   "name": "babel-try-catch-loader",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "author": "syszhpe@gmail.com",
   "description": "babel try catch loader for webpack",
   "main": "lib/index.js",
@@ -32,6 +32,7 @@
   ],
   "dependencies": {
     "babel-core": "^6.24.0",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "loader-utils": "^0.2.5",
     "object-assign": "^4.1.1",
     "source-map": "^0.5.6"
